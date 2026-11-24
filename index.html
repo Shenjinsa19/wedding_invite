@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#f7dfe8">
+    <meta name="description" content="You are warmly invited to celebrate the wedding of Shaffana Bibi and Difilin on January 11, 2027.">
+    <title>Shaffana Bibi &amp; Difilin | Wedding Invitation</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&amp;family=Great+Vibes&amp;family=Allura&amp;family=Bodoni+Moda:opsz,wght@6..96,400;6..96,500;6..96,600&amp;family=Playfair+Display:wght@400;500;600;700&amp;family=Montserrat:wght@300;400;500;600&amp;display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body class="locked">
+    <div class="main" id="main" aria-hidden="true" inert>
+        <div class="heart-bubbles" id="heartBubbles" aria-hidden="true"></div>
+        <button class="music-toggle" id="musicBtn" type="button" aria-label="Turn music on" aria-pressed="false">
+            <span aria-hidden="true">♫</span><span id="musicLabel">OFF</span>
+        </button>
+        <audio id="weddingMusic" loop preload="none">
+            <source src="./music/wedding-music.mp3.mpeg" type="audio/mpeg">
+        </audio>
+
+        <section class="page couple" aria-label="The couple and their families">
+            <div class="couple-copy">
+                <p class="eyebrow">We cordially invite you with<br>your family for the covenant<br>wedding ceremony of</p>
+                <div class="couple-person">
+                    <h1>Er. Shaffana Bibi</h1>
+                    <p><em><span class="couple-parent-name">Daughter of Mr. S Suresh Kumar Nayagam</span><br>&amp; Mrs. A Kiruba Jeba Joy</em></p>
+                </div>
+                <div class="couple-divider" aria-hidden="true">&amp;</div>
+                <div class="couple-person">
+                    <h1>Dr. Difilin</h1>
+                    <p><em>Son of Mr. R Jayan<br>&amp; Mrs. C Suganthi</em></p>
+                </div>
+            </div>
+        </section>
+
+        <section class="page save-date" aria-label="Remember the date">
+            <div class="save-overlay">
+                <div class="scratch-wrap" aria-label="Scratch to reveal the wedding date">
+                    <div class="revealed-date">
+                        <span>OUR WEDDING DAY</span>
+                        <strong>11</strong>
+                        <b>JANUARY</b>
+                        <small>2027 · MONDAY</small>
+                    </div>
+                    <canvas id="scratchCanvas" aria-hidden="true"></canvas>
+                </div>
+                <h2>Save the Moment</h2>
+                <div class="countdown" aria-label="Countdown to the wedding">
+                    <div><strong id="days">00</strong><span>DAYS</span></div>
+                    <div><strong id="hours">00</strong><span>HOURS</span></div>
+                    <div><strong id="minutes">00</strong><span>MINUTES</span></div>
+                    <div><strong id="seconds">00</strong><span>SECONDS</span></div>
+                </div>
+            </div>
+        </section>
+
+        <section class="page event wedding" aria-label="Wedding Ceremony">
+            <div class="event-copy wedding-copy">
+                <h2>Wedding Ceremony</h2>
+                <p class="event-date">Monday, 11 January 2027</p>
+                <p class="event-time">3:00 PM</p>
+                <p class="event-place">CSI District Church Marthandam<br>Kanyakumari ,Tamil Nadu-629165</p>
+                <a class="map-link" href="https://maps.app.goo.gl/RdWTYRxQEbWvAvKt9" target="_blank" rel="noopener noreferrer">Open Map</a>
+            </div>
+        </section>
+
+        <section class="page event reception" aria-label="Wedding Reception">
+            <div class="event-copy reception-copy">
+                <h2>Wedding Reception</h2>
+                <p class="event-date">Monday, 11 January 2027</p>
+                <p class="event-time">6:00 PM</p>
+                <p class="event-place">Sinclair Memorial Hall<br>Marthandam<br>Kanyakumari, Tamil Nadu 629165</p>
+                <a class="map-link" href="https://maps.app.goo.gl/ifnknwSEhhUsbenc7" target="_blank" rel="noopener noreferrer">Open Map</a>
+            </div>
+        </section>
+
+        <section class="page gallery" aria-label="Photo Gallery">
+            <div class="gallery-content">
+                <h2>Photo Gallery</h2>
+                <div class="gallery-viewer">
+                    <button class="gallery-nav prev" id="previousPhoto" type="button" aria-label="Previous photo">‹</button>
+                    <figure class="photo-print">
+                        <img id="galleryImage" src="./images/aishu.jpeg" alt="Shaffana Bibi" loading="lazy">
+                        <figcaption class="photo-caption" id="galleryCaption">“Two hearts, one beautiful beginning.”</figcaption>
+                    </figure>
+                    <button class="gallery-nav next" id="nextPhoto" type="button" aria-label="Next photo">›</button>
+                </div>
+                <div class="gallery-dots" aria-hidden="true"><span class="active"></span></div>
+            </div>
+        </section>
+        <section class="page guest" aria-label="Guest Message">
+            <div class="guest-copy">
+                <h2>With Gratitude</h2>
+                <p>Your valued presence and kind blessings<br>will make our special occasion<br>all the more meaningful.</p>
+                <div class="guest-signoff">
+                    <span>– Shaffana Bibi</span>
+                    <strong>&amp;</strong>
+                    <span>Difilin</span>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+    <div class="opening" id="opening" aria-hidden="false">
+        <div class="opening-monogram-wrap">
+            <img class="monogram" src="./images/dslogo.png" alt="DS monogram">
+            <p class="opening-subtitle">Wedding Invitation</p>
+            <button class="open-btn" id="openBtn" type="button">Open Invitation</button>
+        </div>
+    </div>
+
+    <script src="./script.js"></script>
+</body>
+</html>
