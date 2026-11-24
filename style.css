@@ -1629,6 +1629,10 @@ body.locked {
     font-size: clamp(13px, 3.8vw, 19px);
 }
 
+.couple-person p.couple-parentage {
+    max-width: none;
+}
+
 .couple-person:first-of-type {
     transform: translateY(14px);
 }
