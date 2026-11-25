@@ -183,30 +183,94 @@ const previousPhoto = document.getElementById("previousPhoto");
 const nextPhoto = document.getElementById("nextPhoto");
 const galleryImage = document.getElementById("galleryImage");
 const galleryCaption = document.getElementById("galleryCaption");
+const galleryVideo = document.getElementById("galleryVideo");
+const galleryVideoToggle = document.getElementById("galleryVideoToggle");
+const galleryVideoToggleIcon = document.getElementById("galleryVideoToggleIcon");
+const galleryVideoToggleLabel = document.getElementById("galleryVideoToggleLabel");
 const galleryPhotos = [
     {
-        src: "./images/aishu.jpeg",
+        src: "./images/couple_1.jpg",
         alt: "Shaffana Bibi",
         caption: "A beautiful beginning."
     },
     {
-        src: "./images/diflin.jpeg",
+        src: "./images/couple_2.jpg",
         alt: "Difilin",
         caption: "A moment to treasure."
     },
-    
+    {
+        src: "./images/couple_3.jpg",
+        alt: "Difilin",
+        caption: "A little piece of eternity."
+    },
+    {
+        src: "./images/couple_4.jpg",
+        alt: "Difilin",
+        caption: "Our kind of magic."
+    },
+    {
+        src: "./images/couple_5.jpg",
+        alt: "Difilin",
+        caption: "A love like poetry."
+    },
+    {
+        src: "./images/couple_6.jpg",
+        alt: "Difilin",
+        caption: "A tale worth telling."
+    }
 ];
-let currentPhoto = 0;
+let currentGalleryItem = 0;
 
-function showPhoto(direction) {
-    currentPhoto = (currentPhoto + direction + galleryPhotos.length) % galleryPhotos.length;
-    galleryImage.src = galleryPhotos[currentPhoto].src;
-    galleryImage.alt = galleryPhotos[currentPhoto].alt;
-    galleryCaption.textContent = galleryPhotos[currentPhoto].caption;
+function updateGalleryVideoButton(isPlaying) {
+    galleryVideoToggleIcon.textContent = isPlaying ? "Ⅱ" : "▶";
+    galleryVideoToggleLabel.textContent = isPlaying ? "Pause" : "Play";
+    galleryVideoToggle.setAttribute("aria-label", `${isPlaying ? "Pause" : "Play"} wedding video`);
 }
 
-previousPhoto.addEventListener("click", () => showPhoto(-1));
-nextPhoto.addEventListener("click", () => showPhoto(1));
+function showGalleryItem(direction) {
+    const itemCount = galleryPhotos.length + 1;
+    currentGalleryItem = (currentGalleryItem + direction + itemCount) % itemCount;
+    galleryVideo.pause();
+
+    if (currentGalleryItem === 0) {
+        galleryVideo.hidden = false;
+        galleryImage.hidden = true;
+        galleryVideoToggle.hidden = false;
+        galleryCaption.textContent = "A promise wrapped in love";
+        return;
+    }
+
+    const photo = galleryPhotos[currentGalleryItem - 1];
+    galleryVideo.hidden = true;
+    galleryImage.hidden = false;
+    galleryVideoToggle.hidden = true;
+    galleryImage.src = photo.src;
+    galleryImage.alt = photo.alt;
+    galleryCaption.textContent = photo.caption;
+}
+
+galleryVideoToggle.addEventListener("click", async () => {
+    if (galleryVideo.paused) {
+        try {
+            await galleryVideo.play();
+        } catch {
+            galleryVideoToggleLabel.textContent = "Try again";
+            galleryVideoToggle.setAttribute("aria-label", "Unable to play wedding video. Try again.");
+        }
+    } else {
+        galleryVideo.pause();
+    }
+});
+
+galleryVideo.addEventListener("play", () => updateGalleryVideoButton(true));
+galleryVideo.addEventListener("pause", () => updateGalleryVideoButton(false));
+galleryVideo.addEventListener("error", () => {
+    galleryVideoToggleLabel.textContent = "Unavailable";
+    galleryVideoToggle.setAttribute("aria-label", "Wedding video unavailable");
+});
+
+previousPhoto.addEventListener("click", () => showGalleryItem(-1));
+nextPhoto.addEventListener("click", () => showGalleryItem(1));
 
 if ("IntersectionObserver" in window && !window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
     const revealTargets = document.querySelectorAll(

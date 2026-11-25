@@ -25,12 +25,12 @@
             <div class="couple-copy">
                 <p class="eyebrow">We cordially invite you with<br>your family for the covenant<br>wedding ceremony of</p>
                 <div class="couple-person">
-                    <h1>Er. Shaffana Bibi</h1>
+                    <h1>Shaffana Bibi</h1>
                     <p><em><span class="couple-parent-name">Daughter of Mr. S Suresh Kumar Nayagam</span><br>&amp; Mrs. A Kiruba Jeba Joy</em></p>
                 </div>
                 <div class="couple-divider" aria-hidden="true">&amp;</div>
                 <div class="couple-person">
-                    <h1>Dr. Difilin</h1>
+                    <h1>Difilin</h1>
                     <p><em>Son of Mr. R Jayan<br>&amp; Mrs. C Suganthi</em></p>
                 </div>
             </div>
@@ -62,7 +62,7 @@
                 <h2>Wedding Ceremony</h2>
                 <p class="event-date">Monday, 11 January 2027</p>
                 <p class="event-time">3:00 PM</p>
-                <p class="event-place">CSI District Church Marthandam<br>Kanyakumari ,Tamil Nadu-629165</p>
+                <p class="event-place">CSI District Church<br> Marthandam<br>Kanyakumari ,Tamil Nadu-629165</p>
                 <a class="map-link" href="https://maps.app.goo.gl/RdWTYRxQEbWvAvKt9" target="_blank" rel="noopener noreferrer">Open Map</a>
             </div>
         </section>
@@ -72,7 +72,7 @@
                 <h2>Wedding Reception</h2>
                 <p class="event-date">Monday, 11 January 2027</p>
                 <p class="event-time">6:00 PM</p>
-                <p class="event-place">Sinclair Memorial Hall<br>Marthandam<br>Kanyakumari, Tamil Nadu 629165</p>
+                <p class="event-place">Sinclair Memorial Hall<br>Marthandam<br>Kanyakumari, Tamil Nadu-629165</p>
                 <a class="map-link" href="https://maps.app.goo.gl/ifnknwSEhhUsbenc7" target="_blank" rel="noopener noreferrer">Open Map</a>
             </div>
         </section>
@@ -83,8 +83,17 @@
                 <div class="gallery-viewer">
                     <button class="gallery-nav prev" id="previousPhoto" type="button" aria-label="Previous photo">‹</button>
                     <figure class="photo-print">
-                        <img id="galleryImage" src="./images/aishu.jpeg" alt="Shaffana Bibi" loading="lazy">
-                        <figcaption class="photo-caption" id="galleryCaption">“Two hearts, one beautiful beginning.”</figcaption>
+                        <div class="gallery-media">
+                            <video id="galleryVideo" class="gallery-video" preload="metadata" playsinline aria-label="Wedding video">
+                                <source src="./video/wedding_video.mp4" type="video/mp4">
+                                Your browser does not support video playback.
+                            </video>
+                            <img id="galleryImage" src="./images/couple_1.jpg" alt="Shaffana Bibi" loading="lazy" hidden>
+                            <button class="gallery-video-toggle" id="galleryVideoToggle" type="button" aria-label="Play wedding video">
+                                <span id="galleryVideoToggleIcon" aria-hidden="true">▶</span><span id="galleryVideoToggleLabel">Play</span>
+                            </button>
+                        </div>
+                        <figcaption class="photo-caption" id="galleryCaption">A promise wrapped in love</figcaption>
                     </figure>
                     <button class="gallery-nav next" id="nextPhoto" type="button" aria-label="Next photo">›</button>
                 </div>
