@@ -282,53 +282,48 @@ a:focus-visible {
 }
 
 .heart-bubbles {
-    position: fixed;
+    position: absolute;
     inset: 0;
     z-index: 4;
     overflow: hidden;
     pointer-events: none;
 }
 
-.heart-bubble {
+.flower-petal {
     position: absolute;
-    left: var(--bubble-left);
-    bottom: -12vh;
-    display: grid;
-    place-items: center;
-    width: var(--bubble-size);
-    height: var(--bubble-size);
-    border: 1px solid rgba(193, 124, 140, .34);
-    border-radius: 50%;
+    left: var(--petal-left);
+    top: -12vh;
+    width: var(--petal-width);
+    height: var(--petal-height);
+    border-radius: 70% 35% 70% 35%;
     background:
-        radial-gradient(circle at 30% 25%, rgba(255, 255, 255, .76), transparent 36%),
-        radial-gradient(circle at 70% 75%, rgba(237, 197, 205, .3), rgba(255, 250, 251, .06) 72%);
-    box-shadow: inset -2px -3px 7px rgba(193, 124, 140, .09), 0 0 18px rgba(237, 197, 205, .14);
+        linear-gradient(135deg, rgba(255, 255, 255, .72) 8%, transparent 38%),
+        linear-gradient(145deg, #f7bfd2 18%, #e9a5bd 72%, #c97b9b);
+    box-shadow:
+        inset -1px -2px 4px rgba(193, 124, 140, .12),
+        0 3px 8px rgba(193, 124, 140, .08);
     opacity: 0;
-    animation: heart-bubble-rise var(--bubble-duration) linear var(--bubble-delay) infinite;
+    transform-origin: center;
+    animation: flower-petal-fall var(--petal-duration) linear var(--petal-delay) infinite;
 }
 
-.heart-bubble-symbol {
-    color: rgba(193, 124, 140, .78);
-    font-family: var(--serif);
-    font-size: calc(var(--bubble-size) * .66);
-    line-height: 1;
-    text-shadow: 0 1px 5px rgba(255, 250, 251, .85);
-}
-
-@keyframes heart-bubble-rise {
+@keyframes flower-petal-fall {
     0% {
         opacity: 0;
-        transform: translate3d(0, 0, 0) scale(.72);
+        transform: translate3d(0, -4vh, 0) rotate(0deg) scale(.82);
     }
-    12% {
-        opacity: .68;
+    10% {
+        opacity: .82;
     }
-    82% {
-        opacity: .48;
+    45% {
+        transform: translate3d(var(--petal-drift), 48vh, 0) rotate(180deg) scale(.92);
+    }
+    88% {
+        opacity: .72;
     }
     100% {
         opacity: 0;
-        transform: translate3d(var(--bubble-drift), -120vh, 0) scale(1.12);
+        transform: translate3d(var(--petal-drift), 112vh, 0) rotate(var(--petal-rotation)) scale(.78);
     }
 }
 
@@ -2081,10 +2076,6 @@ body.locked {
 
 .music-toggle > span:first-child {
     font-size: 12px;
-}
-
-.heart-bubbles {
-    display: none;
 }
 
 @media (max-width: 430px) {

@@ -4,39 +4,54 @@ const main = document.getElementById("main");
 const music = document.getElementById("weddingMusic");
 const musicBtn = document.getElementById("musicBtn");
 
-const heartBubbleSettings = [
-    [5, 28, 22, -4, -26],
-    [13, 18, 19, -13, 24],
-    [22, 34, 25, -8, -18],
-    [31, 22, 20, -17, 31],
-    [40, 16, 24, -2, -22],
-    [49, 30, 21, -11, 20],
-    [58, 20, 26, -19, -30],
-    [67, 36, 23, -6, 25],
-    [76, 19, 20, -15, -20],
-    [85, 29, 25, -9, 28],
-    [94, 17, 22, -21, -25],
-    [3, 24, 27, -18, 20],
-    [55, 15, 19, -5, -18],
-    [91, 23, 24, -12, 22]
+const flowerPetalSettings = [
+    [4, 9, 17, -14, -38, -80],
+    [9, 13, 21, -5, 28, 110],
+    [15, 8, 19, -18, -24, 170],
+    [21, 15, 24, -11, 34, -130],
+    [28, 10, 18, -2, -20, 90],
+    [34, 12, 22, -16, 31, -160],
+    [40, 7, 20, -8, -35, 140],
+    [46, 14, 25, -20, 22, -100],
+    [52, 9, 18, -4, 38, 180],
+    [58, 11, 23, -13, -27, -150],
+    [64, 8, 19, -7, 25, 120],
+    [70, 16, 26, -21, -33, -170],
+    [76, 10, 21, -1, 29, 95],
+    [82, 13, 24, -15, -22, 155],
+    [88, 8, 18, -9, 36, -120],
+    [94, 12, 22, -19, -30, 140],
+    [12, 7, 16, -12, 20, -90],
+    [56, 7, 17, -6, -18, 75],
+    [97, 9, 20, -17, 22, 130],
+    [7, 11, 20, -10, 32, 125],
+    [18, 8, 17, -16, -28, -145],
+    [26, 13, 23, -20, 24, 160],
+    [37, 9, 19, -3, -34, -110],
+    [44, 12, 21, -14, 26, 135],
+    [49, 8, 16, -7, -21, -95],
+    [62, 14, 24, -18, 31, 175],
+    [68, 9, 18, -5, -25, -140],
+    [73, 12, 22, -12, 34, 105],
+    [79, 8, 17, -1, -19, -125],
+    [86, 11, 20, -15, 27, 150],
+    [92, 7, 16, -8, -32, -90]
 ];
 
 if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
     const heartBubbles = document.getElementById("heartBubbles");
 
-    heartBubbleSettings.forEach(([left, size, duration, delay, drift]) => {
-        const bubble = document.createElement("span");
-        const heart = document.createElement("span");
-        bubble.className = "heart-bubble";
-        heart.className = "heart-bubble-symbol";
-        heart.textContent = "♡";
-        bubble.style.setProperty("--bubble-left", `${left}%`);
-        bubble.style.setProperty("--bubble-size", `${size}px`);
-        bubble.style.setProperty("--bubble-duration", `${duration}s`);
-        bubble.style.setProperty("--bubble-delay", `${delay}s`);
-        bubble.style.setProperty("--bubble-drift", `${drift}px`);
-        bubble.append(heart);
-        heartBubbles.append(bubble);
+    flowerPetalSettings.forEach(([left, width, duration, delay, drift, rotation]) => {
+        const petal = document.createElement("span");
+        petal.className = "flower-petal";
+        petal.style.setProperty("--petal-left", `${left}%`);
+        petal.style.setProperty("--petal-width", `${width}px`);
+        petal.style.setProperty("--petal-height", `${Math.round(width * 1.45)}px`);
+        petal.style.setProperty("--petal-duration", `${duration}s`);
+        petal.style.setProperty("--petal-delay", `${delay}s`);
+        petal.style.setProperty("--petal-drift", `${drift}px`);
+        petal.style.setProperty("--petal-rotation", `${rotation}deg`);
+        heartBubbles.append(petal);
     });
 }
 
