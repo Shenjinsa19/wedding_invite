@@ -237,9 +237,20 @@ const galleryPhotos = [
 let currentGalleryItem = 0;
 
 function updateGalleryVideoButton(isPlaying) {
+    galleryVideoToggle.classList.remove("needs-interaction");
     galleryVideoToggleIcon.textContent = isPlaying ? "Ⅱ" : "▶";
     galleryVideoToggleLabel.textContent = isPlaying ? "Pause" : "Play";
     galleryVideoToggle.setAttribute("aria-label", `${isPlaying ? "Pause" : "Play"} wedding video`);
+}
+
+function promptForGalleryVideoSound() {
+    galleryVideoToggle.classList.add("needs-interaction");
+    galleryVideoToggleLabel.textContent = "Tap for sound";
+    galleryVideoToggle.setAttribute("aria-label", "Play wedding video with sound");
+}
+
+function playGalleryVideo() {
+    galleryVideo.play().catch(promptForGalleryVideoSound);
 }
 
 function showGalleryItem(direction) {
@@ -252,6 +263,7 @@ function showGalleryItem(direction) {
         galleryImage.hidden = true;
         galleryVideoToggle.hidden = false;
         galleryCaption.textContent = "A promise wrapped in love";
+        playGalleryVideo();
         return;
     }
 
@@ -264,14 +276,9 @@ function showGalleryItem(direction) {
     galleryCaption.textContent = photo.caption;
 }
 
-galleryVideoToggle.addEventListener("click", async () => {
+galleryVideoToggle.addEventListener("click", () => {
     if (galleryVideo.paused) {
-        try {
-            await galleryVideo.play();
-        } catch {
-            galleryVideoToggleLabel.textContent = "Try again";
-            galleryVideoToggle.setAttribute("aria-label", "Unable to play wedding video. Try again.");
-        }
+        playGalleryVideo();
     } else {
         galleryVideo.pause();
     }
@@ -286,6 +293,23 @@ galleryVideo.addEventListener("error", () => {
 
 previousPhoto.addEventListener("click", () => showGalleryItem(-1));
 nextPhoto.addEventListener("click", () => showGalleryItem(1));
+
+if ("IntersectionObserver" in window) {
+    const galleryPlaybackObserver = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+            if (currentGalleryItem !== 0) {
+                return;
+            }
+
+            if (entry.isIntersecting) {
+                playGalleryVideo();
+            } else {
+                galleryVideo.pause();
+            }
+        });
+    }, { threshold: 0.1 });
+    galleryPlaybackObserver.observe(document.querySelector(".gallery"));
+}
 
 if ("IntersectionObserver" in window && !window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
     const revealTargets = document.querySelectorAll(
